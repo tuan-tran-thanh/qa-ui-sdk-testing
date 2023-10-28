@@ -1,0 +1,28 @@
+name: pre-merge pipeline
+
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read # required for action check-out repos
+  id-token: write # required for action to access vault
+  pull-requests: read  # required for action detecting changes in folders
+
+concurrency:
+  group: ${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Create commit for the PR
+        run: |
+          echo "testtesttest" > .version
+          git config user.email "github-actions@github.com"
+          git config user.name "github-actions"
+          git add .version

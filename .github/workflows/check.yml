@@ -1,0 +1,21 @@
+
+name: Return status of pre-merge pipeline
+
+on:
+  workflow_run:
+    workflows: ["pre-merge pipeline"]
+    types: [completed]
+
+jobs:
+  check:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Return the result of the triggering workflow
+        run: |
+          if [ "${{ github.event.workflow_run.conclusion }}" = "success" ]; then
+            echo "The Triggering workflows passed."
+            exit 1
+          else
+            echo "The Triggering workflows failed."
+            exit 1
+          fi
