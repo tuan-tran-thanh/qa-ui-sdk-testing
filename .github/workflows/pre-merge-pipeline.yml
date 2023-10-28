@@ -16,7 +16,7 @@ concurrency:
 jobs:
   skip_job:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.title =~ 'skip ci' }}
+    if: ${{ github.event.pull_request.title == 'skip ci' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
