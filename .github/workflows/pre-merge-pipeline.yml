@@ -14,9 +14,18 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  skip_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.title == 'skip ci' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Create commit for the PR
+        run: |
+          echo "testtesttest" > .version
+          git config user.email "
   my_job:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
