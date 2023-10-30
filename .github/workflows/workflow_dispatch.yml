@@ -18,9 +18,16 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "github-actions"
           git add .version
+          git commit -m "TRIVIAL: Increment version"
       - name: Open a PR
         uses: peter-evans/create-pull-request@v5
+        id: cpr
         with:
           branch: test
           title: Release title
           body: Release PR
+      - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-operation == 'created'
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }
