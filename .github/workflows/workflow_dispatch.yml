@@ -30,4 +30,4 @@ jobs:
         if: steps.cpr.outputs.pull-request-operation == 'created'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
-          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
