@@ -14,7 +14,7 @@ jobs:
         uses: LouisBrunner/checks-action@v1.6.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Return status of pre-merge pipeline
+          name: check status
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
             {"summary":"hello"}
