@@ -1,4 +1,4 @@
-name: pre-merge pipeline
+name: validate pipeline
 
 on:
   pull_request:
