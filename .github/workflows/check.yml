@@ -22,6 +22,5 @@ jobs:
           sha: ${{ github.event.workflow_run.head_sha }}
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
-            {"summary":"the status check for premerge pipeline"}
-          action_url: ${{ github.event.repository.html_url }}/actions/runs/${{ github.event.workflow_run.id }}
-          details_url: ${{ github.event.repository.html_url }}/actions/runs/${{ github.event.workflow_run.id }}
+            {"summary":"See: ${{ github.event.repository.html_url }}/actions/runs/${{ github.event.workflow_run.id }}"}
+
