@@ -9,10 +9,6 @@ on:
 jobs:
   check:
     runs-on: [ubuntu-latest]
-    permissions:
-      checks: write
-      contents: write
-
     steps:
       - name: Dump GitHub context
         env:
@@ -26,4 +22,5 @@ jobs:
           sha: ${{ github.event.workflow_run.head_sha }}
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
-            {"summary":"hello"}
+            { "summary": "Details run can be found here: ${{ github.server_url }}/${{ github.repository }}/
+            actions/runs/${{ github.event.workflow_run.id }}" }
