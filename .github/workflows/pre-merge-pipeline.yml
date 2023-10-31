@@ -24,8 +24,14 @@ jobs:
         run: |
           echo "testtesttest" > .version
           git config user.email "
+  run_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
   my_job:
     runs-on: ubuntu-latest
+    needs: [skip_job, run_job]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -35,3 +41,4 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "github-actions"
           git add .version
+          exit 1
