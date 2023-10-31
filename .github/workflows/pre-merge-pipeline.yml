@@ -35,4 +35,3 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "github-actions"
           git add .version
-          exit 1
