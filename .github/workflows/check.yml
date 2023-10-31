@@ -9,6 +9,9 @@ on:
 jobs:
   check:
     runs-on: [ubuntu-latest]
+    permissions:
+      checks: write
+      contents: write
     steps:
       - name: Dump GitHub context
         env:
@@ -21,7 +24,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ github.event.workflow_run.head_sha }}
           name: check_status
-          conclusion: stale
           status: in_progress
       - name: Update the status check
         uses: LouisBrunner/checks-action@v1.6.1
