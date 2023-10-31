@@ -2,8 +2,6 @@
 name: Return status of pre-merge pipeline
 
 on:
-  pull_request:
-    branches: ["master", "release"]
   workflow_run:
     workflows: ["pre-merge pipeline"]
     types: [completed]
