@@ -22,5 +22,5 @@ jobs:
           sha: ${{ github.event.workflow_run.head_sha }}
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
-            { "summary": "Details run can be found here: ${{ github.server_url }}/${{ github.repository }}/
-            actions/runs/${{ github.event.workflow_run.id }}" }
+            {"summary":"Details run can be found here: ${{ github.server_url }}/${{ github.repository }}/
+            actions/runs/${{ github.event.workflow_run.id }}"}
