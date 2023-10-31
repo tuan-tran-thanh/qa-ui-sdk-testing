@@ -23,3 +23,4 @@ jobs:
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
             {"summary":"the status check for premerge pipeline"}
+          details_url: ${{ github.event.repository.html_url }}/actions/runs/${{ github.event.workflow_run.id }}
