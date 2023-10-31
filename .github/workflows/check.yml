@@ -9,12 +9,16 @@ on:
 jobs:
   check:
     runs-on: [ubuntu-latest]
+    permissions:
+      checks: write
+      contents: write
+
     steps:
       - name: Return the result of the triggering workflow
         uses: LouisBrunner/checks-action@v1.6.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: check status
+          name: check_status
           conclusion: ${{ github.event.workflow_run.conclusion }}
           output: |
             {"summary":"hello"}
