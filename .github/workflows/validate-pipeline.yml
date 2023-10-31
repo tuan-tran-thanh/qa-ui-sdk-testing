@@ -9,10 +9,6 @@ permissions:
   id-token: write # required for action to access vault
   pull-requests: read  # required for action detecting changes in folders
 
-concurrency:
-  group: ${{ github.event.number }}
-  cancel-in-progress: true
-
 jobs:
   run_job:
     runs-on: ubuntu-latest
