@@ -35,7 +35,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git config user.name "github-actions"
           git add .version
-          sleep 30
+          sleep 60
           exit 1
   final_job:
     needs: [skip_job, my_job]
@@ -44,4 +44,15 @@ jobs:
     steps:
       - name: final result
         run: |
-          echo "hello world"
+          if [ "${{ needs.skip_job.result }}" == "failure" ] || [ "${{ needs.my_job.result }}" == "failure" ]; then
+            echo "Some job failed"
+            exit 1
+          elif [ "${{ needs.skip_job.result }}" == "cancelled" ] || [ "${{ needs.my_job.result }}" == "cancelled" ]; then
+            echo "Some job cancelled"
+            exit 1
+          elif
+            [ "${{ needs.skip_job.result }}" != "success" ] || [ "${{ needs.my_job.result }}" != "success" ]; then
+            echo "No job success"
+            exit 1
+          fi
+          echo "Job passed"
