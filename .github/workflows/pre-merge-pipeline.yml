@@ -36,13 +36,12 @@ jobs:
           git config user.name "github-actions"
           git add .version
           sleep 30
+          exit 1
   final_job:
     needs: [skip_job, my_job]
     runs-on: ubuntu-latest
     if: always()
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Create commit for the PR
+      - name: final result
         run: |
           echo "hello world"
